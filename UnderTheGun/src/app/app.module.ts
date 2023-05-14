@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HomePageComponent } from './home-page/home-page.component';
 import { GamePageComponent } from './game-page/game-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, GamePageComponent, HomePageComponent],
@@ -17,6 +18,7 @@ import { GamePageComponent } from './game-page/game-page.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatGridListModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
