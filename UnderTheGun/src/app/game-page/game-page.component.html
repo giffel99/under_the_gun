@@ -2,29 +2,27 @@
   <h1 class="center">Under the gun</h1>
   <h1 style="font-size: xx-large" class="center">Level {{ currentLevel }}</h1>
   <div class="card-area">
-    <img
-      class="image-home left"
-      src="./../assets/card_tilted_left.svg"
-      alt="playing card left"
-    />
+    <img class="image-home left" [src]="leftCard.url" alt="playing card left" />
     <img
       class="image-home right"
-      src= rightCard.url
+      [src]="rightCard.url"
       alt="playing card right"
     />
   </div>
   <div class="select-area">
-    <div style="padding-bottom: 4em">
-      <span class="select-text">Do you</span><br />
-    </div>
+    <div><span class="select-text">Do you</span><br /></div>
     <div>
-      <button mat-button class="select-text bet" (click)="selectOption('bet')">
+      <button
+        type="button"
+        class="btn btn-success select-text rounded"
+        (click)="selectOption('bet')"
+      >
         Bet
       </button>
       <span style="vertical-align: middle" class="select-text"> or </span>
       <button
-        mat-button
-        class="select-text fold"
+        type="button"
+        class="btn btn-danger select-text rounded"
         (click)="selectOption('fold')"
       >
         Fold

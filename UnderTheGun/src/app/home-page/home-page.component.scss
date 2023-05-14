@@ -20,8 +20,6 @@
   font-family: "Roboto";
   font-weight: 800;
   margin: auto;
-  position: absolute;
-  left: 40%;
 
   animation: blinker 3s linear infinite;
 }
@@ -50,4 +48,9 @@
 }
 .right {
   margin-left: 128px;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

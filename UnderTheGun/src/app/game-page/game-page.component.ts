@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ICard, CardService } from 'src/services/card.service';
-
 @Component({
   selector: 'app-game-page',
   templateUrl: './game-page.component.html',
@@ -32,12 +31,14 @@ export class GamePageComponent implements OnInit {
 
     if (correctAnswer == choice) {
       console.log('You are correct! The answer was', choice);
-    }
-    if (correctAnswer == 'both') {
-      console.log('Both actions were correct this time');
+      this.nextLevel();
     } else {
       console.log('Wrong answer unfortunetly.');
+      this.gameOver();
     }
+  }
+  gameOver(): void {
+    this.currentLevel = 1;
   }
 
   nextLevel(): void {
@@ -49,11 +50,11 @@ export class GamePageComponent implements OnInit {
     this.leftCard.card = this.cardService.pickRandomCard();
     cardNameUrl =
       this.leftCard.card.type + this.leftCard.card.suit.toString().charAt(0);
-    // this.leftCard.url = ' ../../assets/' + cardNameUrl + '.svg';
+    this.leftCard.url = './../assets/cards/' + cardNameUrl + '.svg';
 
     this.rightCard.card = this.cardService.pickRandomCard();
     cardNameUrl =
       this.rightCard.card.type + this.rightCard.card.suit.toString().charAt(0);
-    // this.rightCard.url = './../assets/" + cardNameUrl + '.svg';
+    this.rightCard.url = './../assets/cards/' + cardNameUrl + '.svg';
   }
 }

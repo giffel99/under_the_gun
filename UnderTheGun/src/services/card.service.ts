@@ -71,25 +71,46 @@ export class CardService {
   constructor() {}
 
   public isCorrectOption(c1: ICard, c2: ICard): string {
-    // If the cards are the same then its bet & if its twos then its true no matter what
-    if (this.isPocket(c1, c2)) {
-      return c1.type == '2' ? 'both' : 'bet';
-    }
+    // If the cards are the same and are high AKQJ109
+    if (this.isGoodPocket(c1, c2)) return 'bet';
 
-    if (this.isSuited(c1, c2)) {
-    }
-    const options = ['bet', 'fold', 'both'];
-    return options[Math.floor(Math.random() * options.length)];
+    // If one of the cards are an ace.
+    if (this.containGoodAce(c1, c2)) return 'bet';
+
+    // If theyre nicely suited
+    if (this.isSuited(c1, c2)) return 'bet';
+
+    return 'fold';
   }
 
   public pickRandomCard(): ICard {
     return this.deck[Math.floor(Math.random() * this.deck.length)];
   }
 
-  private isPocket(c1: ICard, c2: ICard): boolean {
-    return c1.type === c2.type;
+  // Helper algorithms
+  private isGoodPocket(c1: ICard, c2: ICard): boolean {
+    if ('AKQJ109'.includes(c1.type)) return c1.type === c2.type;
+    return false;
   }
   private isSuited(c1: ICard, c2: ICard): boolean {
-    return c1.suit === c2.suit;
+    if (c1.suit === c2.suit) {
+      const types = c1.type + c2.type;
+      const goodMatch = ['KQ', 'KJ', 'QJ', 'J10', 'QK', 'JK', 'JQ', '10J'];
+      return goodMatch.findIndex((type) => type === types) !== -1;
+    }
+    return false;
+  }
+  private containGoodAce(c1: ICard, c2: ICard): boolean {
+    let types = c1.type + c2.type;
+    let isSuited = c1.suit === c2.suit;
+    if (types.includes('A')) {
+      if (types.includes('K') || types.includes('Q')) {
+        return true;
+      }
+      if (isSuited) {
+        return 'J10'.includes(c1.type) || 'J10'.includes(c2.type);
+      }
+      return false;
+    }
   }
 }

@@ -21,9 +21,19 @@
 }
 .left {
   margin-right: 128px;
+  -webkit-transform: rotate(-17deg); /* Chrome, Safari, Opera */
+  -moz-transform: rotate(-17deg);
+  -ms-transform: rotate(-17deg);
+  -o-transform: rotate(-17deg);
+  transform: rotate(-17deg);
 }
 .right {
   margin-left: 128px;
+  -webkit-transform: rotate(17deg); /* Chrome, Safari, Opera */
+  -moz-transform: rotate(17deg);
+  -ms-transform: rotate(17deg);
+  -o-transform: rotate(17deg);
+  transform: rotate(17deg);
 }
 .select-area {
   position: fixed;
@@ -33,13 +43,5 @@
 }
 .select-text {
   font-size: 4em;
-}
-.bet {
-  padding: 40px 2px 40 2px;
-
-  background-color: green;
-}
-.fold {
-  padding: 40px 2px 40 2px;
-  background-color: red;
+  color: black;
 }
