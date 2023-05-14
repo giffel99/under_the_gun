@@ -1,0 +1,7 @@
+- name: Jekyll Minimal Action
+  # You may pin to the exact commit or the version.
+  # uses: vivi90/jekyll-minimal-action@6125abff11e26a0069b6f01c3372f8b350b2b4ce
+  uses: vivi90/jekyll-minimal-action@v1.1.0
+  with:
+    # Complete Jekyll command
+    command: # default is jekyll --help
